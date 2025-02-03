@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   static const Color black = Color(0xFF000000);
+  static const Color black2 = Color(0xFF121212);
   static const Color white = Colors.white;
-  static const Color primary = Color(0xffFF7D20);
+  static const Color primary = Color(0xff564FCC);
   static const Color primaryLight = Color(0xffFFEDE0);
   static const Color primaryDark = Color(0xffF05B2C);
   static const Color grey = Color.fromARGB(255, 157, 161, 170);
@@ -31,4 +32,5 @@ class AppColor {
   static const Color lightPink2 = Color(0xFFEDE0FF);
   static const Color lightPink3 = Color(0xFFDABFFF);
   static const Color chatbotResColor = Color(0xFF673F9F);
+  static const Color lightPurple = Color.fromARGB(255, 215, 205, 221);
 }

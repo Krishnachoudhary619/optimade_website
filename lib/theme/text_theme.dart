@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:optimade_website/theme/app_color.dart';
 
 class AppTextTheme {
   AppTextTheme._();
 
-  static const base = TextStyle(fontFamily: 'RFDewi');
-  static const header = TextStyle(fontFamily: 'Inter');
+  static final base = GoogleFonts.roboto(
+    color: AppColor.black,
+  );
 
+  static final header = GoogleFonts.plusJakartaSans(
+    color: AppColor.black,
+  );
   static final label = base.copyWith(
     fontSize: 9,
     fontWeight: FontWeight.normal,

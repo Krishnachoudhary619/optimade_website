@@ -63,19 +63,19 @@ class _CustomFilledButtonState extends State<CustomFilledButton> {
         },
         style: ElevatedButton.styleFrom(
           backgroundColor:
-              isHovered ? Colors.white : (widget.color ?? AppColor.darkBlue),
+              isHovered ? Colors.white : (widget.color ?? AppColor.primary),
           // shadowColor: widget.color,
-          foregroundColor: AppColor.white,
+          foregroundColor: AppColor.primary,
           // surfaceTintColor: widget.color,
           side: isHovered
               ? BorderSide(
-                  color: widget.color ?? AppColor.darkBlue,
+                  color: widget.color ?? AppColor.primary,
                   width: 2,
                 )
               : null,
           shape: RoundedRectangleBorder(
             borderRadius: widget.borderRadius ??
-                BorderRadius.all(Radius.circular(widget.radius ?? 10)),
+                BorderRadius.all(Radius.circular(widget.radius ?? 50)),
           ),
           elevation: 0,
           fixedSize: widget.size ?? const Size.fromHeight(62),
@@ -90,12 +90,13 @@ class _CustomFilledButtonState extends State<CustomFilledButton> {
                   widget.prefixIcon ?? const SizedBox(),
                   Text(
                     widget.title,
-                    style: AppTextTheme.label.copyWith(
+                    style: AppTextTheme.header.copyWith(
+                      fontWeight: FontWeight.bold,
                       color: isHovered
-                          ? (widget.color ?? AppColor.darkBlue)
+                          ? (widget.color ?? AppColor.primary)
                           : (widget.textColor ?? Colors.white),
                       letterSpacing: 1.2,
-                      fontSize: 15,
+                      fontSize: 14,
                     ),
                   ),
                 ],

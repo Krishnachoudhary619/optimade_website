@@ -1,6 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:optimade_website/shared/widgets/common_app_bar.dart';
+import 'package:gap/gap.dart';
+import 'package:optimade_website/features/home/components/main_widget.dart';
+import 'package:optimade_website/features/home/components/service_list_widget.dart';
+import 'package:optimade_website/gen/assets.gen.dart';
+import 'package:optimade_website/routes/app_router.gr.dart';
+import 'package:optimade_website/shared/extension/widget_ext.dart';
+
+import 'package:optimade_website/shared/widgets/custom_filled_button.dart';
+import 'package:optimade_website/theme/app_color.dart';
 import 'package:optimade_website/theme/text_theme.dart';
 
 @RoutePage()
@@ -9,56 +17,65 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CommonAppBar(),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [
-              0.0026,
-              0.069,
-              0.1353,
-              0.2016,
-              0.2679,
-              0.3342,
-              0.4005,
-              0.4668,
-              0.5332,
-              0.5995,
-              0.6658,
-              0.7321,
-              0.7984,
-              0.8647,
-              0.9310,
-              0.9974
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: AppColor.white,
+            pinned: true,
+            floating: true,
+            toolbarHeight: 93,
+            actions: [
+              SizedBox(
+                height: 50,
+                child: CustomFilledButton(
+                  title: 'Contact Us',
+                  onTap: () {
+                    context.pushRoute(const ContactUsRoute());
+                  },
+                ).pad(right: 50),
+              )
             ],
-            colors: [
-              Color.fromRGBO(255, 255, 255, 0),
-              Color.fromRGBO(255, 255, 255, 0.01),
-              Color.fromRGBO(255, 255, 255, 0.04),
-              Color.fromRGBO(255, 255, 255, 0.08),
-              Color.fromRGBO(255, 255, 255, 0.15),
-              Color.fromRGBO(255, 255, 255, 0.23),
-              Color.fromRGBO(255, 255, 255, 0.33),
-              Color.fromRGBO(255, 255, 255, 0.44),
-              Color.fromRGBO(255, 255, 255, 0.56),
-              Color.fromRGBO(255, 255, 255, 0.67),
-              Color.fromRGBO(255, 255, 255, 0.77),
-              Color.fromRGBO(255, 255, 255, 0.85),
-              Color.fromRGBO(255, 255, 255, 0.92),
-              Color.fromRGBO(255, 255, 255, 0.96),
-              Color.fromRGBO(255, 255, 255, 0.99),
-              Color.fromRGBO(255, 255, 255, 1),
-            ],
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    // color: AppColor.red,
+                    child: Assets.images.optimadeLogo.image(width: 220)),
+                textWidget(title: 'Services ', onTap: () {}),
+                textWidget(title: 'Industries', onTap: () {}),
+                textWidget(title: 'Portfolio', onTap: () {}),
+                textWidget(title: 'About us', onTap: () {}),
+                textWidget(title: 'About us', onTap: () {}),
+                textWidget(title: 'Blog', onTap: () {}),
+              ],
+            ).pad(left: 10),
           ),
-        ),
-        child: Center(
-          child: Text(
-            'Hello.',
-            style: AppTextTheme.semiBold30,
+          SliverList.list(children: const [
+            Gap(60),
+            MainWidget(),
+            Gap(50),
+            ServiceListWidget(),
+          ])
+        ],
+      ),
+    );
+  }
+
+  Widget textWidget({required String title, required VoidCallback onTap}) {
+    return Flexible(
+      child: InkWell(
+        onTap: onTap,
+        child: SizedBox(
+            child: Text(
+          title,
+          style: AppTextTheme.header.copyWith(
+            color: AppColor.black2,
+            fontSize: 18,
+            fontWeight: FontWeight.normal,
           ),
-        ),
+          textAlign: TextAlign.center,
+        )).padAll(10),
       ),
     );
   }
